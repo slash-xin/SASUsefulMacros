@@ -8,7 +8,7 @@
 | Paratemters:  PATH=: This parameter can only be the full path of a directory.    |
 |               OUT_DSN: This parameter specifies the name of output data set.     |
 | Example:      %GetFolderDetailListWithSASFunc(path=D:\data, out_dsn=data_list)   |
-| Note:         This macro can only run on the Windows platform.                   |
+| Note:         This macro can only run correctly on the Windows platform.         |
 ------------------------------------------------------------------------------------;
 
 %macro GetFolderDetailListWithSASFunc(path=, /*The full path of specific folder.*/
@@ -48,5 +48,5 @@
     run;
 %mend GetFolderDetailListWithSASFunc;
 
-%GetFolderDetailListWithSASFunc(path=D:\Program Files\SASHome\SASFoundation\9.4\, out_dsn=work.detaillist_sasfunc)
+%GetFolderDetailListWithSASFunc(path=D:\Program Files\SASHome\SASFoundation\9.4, out_dsn=work.detaillist_sasfunc)
 
