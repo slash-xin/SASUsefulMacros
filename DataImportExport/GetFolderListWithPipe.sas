@@ -1,11 +1,14 @@
-*--------------------------------------------------------------------------
-| Name:         GetFolderListWithPipe.sas                                 |
-| Description:  Get a list of file and folder name of specific folder.    |
-| Author:       Slash.Xin                                                 |
-| Usage:        %GetFolderListWithPipe(path=, out_dsn=)                   |
-| Example:      %GetFolderListWithPipe(path=D:\data, out_dsn=data_list)   |
-|               %GetFolderListWithPipe(path=D:\data\*.xls, out_dsn=list)  |
----------------------------------------------------------------------------;
+*-------------------------------------------------------------------------------------
+| Name:         GetFolderListWithPipe.sas                                            |
+| Description:  Get a list of file and folder name of specific folder.               |
+| Author:       Slash.Xin                                                            |
+| Usage:        %GetFolderListWithPipe(path=, out_dsn=)                              |
+| Parameters:   PATH=: This parameter can be either the full path of a directory or  |
+|                      the full path with wildcards of a directory.                  |
+|               OUT_DSN=: This parameter specifies the name of output data set.      |
+| Example:      %GetFolderListWithPipe(path=D:\data, out_dsn=data_list)              |
+|               %GetFolderListWithPipe(path=D:\data\*.xls, out_dsn=list)             |
+--------------------------------------------------------------------------------------;
 
 %macro GetFolderListWithPipe(path=, /*The full path of specific folder.*/
                              out_dsn=/*The name of out data set.*/);
@@ -13,7 +16,7 @@
     data &out_dsn;
         infile list truncover dlm='09'x;
         input item_name :$100.;
-		label item_name="Name";
+        label item_name="Name";
     run;
 %mend GetFolderListWithPipe;
 
