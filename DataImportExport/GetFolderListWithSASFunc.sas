@@ -1,10 +1,12 @@
 *---------------------------------------------------------------------------------
-| Name:         GetFolderListWithSASFunc.sas                                 |
+| Name:         GetFolderListWithSASFunc.sas                                     |
 | Description:  Get a list of file and folder name of specific folder with SAS   |
 |               function.                                                        |
 | Author:       Slash.Xin                                                        |
-| Usage:        %GetFolderListWithSASFunc(path=, out_dsn=)                   |
-| Example:      %GetFolderListWithSASFunc(path=D:\data, out_dsn=data_list)   |
+| Usage:        %GetFolderListWithSASFunc(path=, out_dsn=)                       |
+| Paratemters:  PATH=: This parameter can only be the full path of a directory.  |
+|               OUT_DSN: This parameter specifies the name of output data set.   |
+| Example:      %GetFolderListWithSASFunc(path=D:\data, out_dsn=data_list)       |
 ---------------------------------------------------------------------------------;
 
 %macro GetFolderListWithSASFunc(path=, /*The full path of specific folder.*/
@@ -12,6 +14,7 @@
     data &out_dsn;
         rc=filename("list", "&path");
         length item_name $ 100;
+        label item_name="Name";
         did=dopen("list");
         if did gt 0 then do;
             mem_cnt=dnum(did);
