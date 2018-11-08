@@ -6,7 +6,7 @@
 | Author:       Slash.Xin                                                            |
 | Usage:        %GetFolderDetailListWithPipe(path=, out_dsn=)                        |
 | Parameters:   PATH=: This parameter can be either the full path of a directory or  |
-|                     the full path with wildcards of a directory.                   |
+|                      the full path with wildcards of a directory.                  |
 |               OUT_DSN=: This parameter specifies the name of output data set.      |
 | Example:      %GetFolderDetailListWithPipe(path=D:\data, out_dsn=data_list)        |
 |               %GetFolderDetailListWithPipe(path=D:\data\*.xls, out_dsn=list)       |
