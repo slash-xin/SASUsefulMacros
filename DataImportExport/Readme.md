@@ -10,10 +10,9 @@ Here is an example:
 
 ![Dataset: work.detaillist_pipe1](images/001.png)
 
-%GetFolderDetailListWithPipe(path=D:\Program Files\SASHome\SASFoundation\9.4\*.exe, out_dsn=work.detaillist_pipe2)
+%GetFolderDetailListWithPipe(path=D:\Program Files\SASHome\SASFoundation\9.4\\*.exe, out_dsn=work.detaillist_pipe2)
 
 ![Dataset: work.detaillist_pipe2](images/002.png)
-
 
 ---
 
