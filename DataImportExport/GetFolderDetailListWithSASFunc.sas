@@ -1,18 +1,19 @@
 *-----------------------------------------------------------------------------------
 | Name:         GetFolderDetailListWithSASFunc.sas                                 |
-| Description:  Get a detail list of file and folder infor of specific folder.     |
-|               This detail list contains the ITEM_NAME, ITEM_TYPE(file or         |
-|               folder), ITEM_SIZE, ITEM_CREATE_DATE, ITEM_LAST_MODIFY_DATE.       |
+| Description:  Get a detail list of specific directory. This detail list contains |
+|               the ITEM_NAME, ITEM_TYPE(file or folder), ITEM_SIZE,               |
+|               ITEM_CREATE_DATE, ITEM_LAST_MODIFY_DATE.                           |
 | Author:       Slash.Xin                                                          |
 | Usage:        %GetFolderDetailListWithSASFunc(path=, out_dsn=)                   |
 | Paratemters:  PATH=: This parameter can only be the full path of a directory.    |
-|               OUT_DSN: This parameter specifies the name of output data set.     |
+|               OUT_DSN=: This parameter specifies the name of output data set.    |
+|                                                                                  |
 | Example:      %GetFolderDetailListWithSASFunc(path=D:\data, out_dsn=data_list)   |
 | Note:         This macro can only run correctly on the Windows platform.         |
 ------------------------------------------------------------------------------------;
 
-%macro GetFolderDetailListWithSASFunc(path=, /*The full path of specific folder.*/
-                                    out_dsn=/*The name of out data set.*/);
+%macro GetFolderDetailListWithSASFunc(path=/*The full path of specific folder.*/,
+                                      out_dsn=/*The name of out data set.*/);
     data &out_dsn;
         rc=filename("list", "&path");
         length item_name $ 100 item_type $ 10 item_size 8 item_create_date 8 item_last_modify_date 8;
@@ -48,5 +49,6 @@
     run;
 %mend GetFolderDetailListWithSASFunc;
 
+/*---------------Examples---------------*/
 %GetFolderDetailListWithSASFunc(path=D:\Program Files\SASHome\SASFoundation\9.4, out_dsn=work.detaillist_sasfunc)
 
