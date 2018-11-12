@@ -1,18 +1,18 @@
-*-------------------------------------------------------------------------------------
-| Name:         GetFolderDetailListWithPipe.sas                                      |
-| Description:  Get a detail list of files and folders infor of specific directory.  |
-|               This detail list contains the ITEM_NAME, ITEM_TYPE(file or           |
-|               folder), ITEM_SIZE, ITEM_LAST_MODIFY_DATE.                           |
-| Author:       Slash.Xin                                                            |
-| Usage:        %GetFolderDetailListWithPipe(path=, out_dsn=)                        |
-| Parameters:   PATH=: This parameter can be either the full path of a directory or  |
-|                      the full path with wildcards of a directory.                  |
-|               OUT_DSN=: This parameter specifies the name of output data set.      |
-| Example:      %GetFolderDetailListWithPipe(path=D:\data, out_dsn=data_list)        |
-|               %GetFolderDetailListWithPipe(path=D:\data\*.xls, out_dsn=list)       |
---------------------------------------------------------------------------------------;
+*----------------------------------------------------------------------------------------
+| Name:         GetFolderDetailListWithPipe.sas                                         |
+| Description:  Get a detail list of specific directory. This detail list contains the  |
+|               ITEM_NAME, ITEM_TYPE(file or folder), ITEM_SIZE, ITEM_LAST_MODIFY_DATE. |
+| Author:       Slash.Xin                                                               |
+| Usage:        %GetFolderDetailListWithPipe(path=, out_dsn=)                           |
+| Parameters:   PATH=: This parameter can be either the full path of a directory or the |
+|                      full path with wildcards of a directory.                         |
+|               OUT_DSN=: This parameter specifies the name of output data set.         |
+|                                                                                       |
+| Examples:     %GetFolderDetailListWithPipe(path=D:\data, out_dsn=data_list)           |
+|               %GetFolderDetailListWithPipe(path=D:\data\*.xls, out_dsn=list)          |
+-----------------------------------------------------------------------------------------;
 
-%macro GetFolderDetailListWithPipe(path=, /*The full path of specific directory.*/
+%macro GetFolderDetailListWithPipe(path=/*The full path of specific directory.*/,
                                    out_dsn=/*The name of out data set.*/);
     options datestyle=mdy;
     filename list pipe "dir ""&path"" ";
@@ -42,6 +42,6 @@
     run;
 %mend GetFolderDetailListWithPipe;
 
-/********Examples********/
+/*---------------Examples---------------*/
 %GetFolderDetailListWithPipe(path=D:\Program Files\SASHome\SASFoundation\9.4, out_dsn=work.detaillist_pipe1)
 %GetFolderDetailListWithPipe(path=D:\Program Files\SASHome\SASFoundation\9.4\*.exe, out_dsn=work.detaillist_pipe2)
